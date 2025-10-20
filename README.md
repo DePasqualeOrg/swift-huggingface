@@ -669,7 +669,8 @@ do {
 
 ### Inference Providers API
 
-The Inference Providers API allows you to run AI tasks using various models and providers. It automatically handles authentication and routing to the best provider for your needs.
+The Inference Providers API allows you to run AI tasks using various models and providers. 
+It automatically handles authentication and routing to the best provider for your needs.
 
 #### Creating an Inference HubClient
 
