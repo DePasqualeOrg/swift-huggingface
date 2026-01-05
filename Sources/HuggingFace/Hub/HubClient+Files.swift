@@ -1,4 +1,5 @@
 import Crypto
+import FileLock
 import Foundation
 
 #if canImport(UniformTypeIdentifiers)
@@ -458,7 +459,7 @@ public extension HubClient {
         // Acquire lock to prevent parallel downloads of the same blob
         let locksDir = cache.locksDirectory(repo: repo, kind: kind)
         let lockPath = locksDir.appendingPathComponent(normalizedEtag)
-        let lock = FileLock(path: lockPath)
+        let lock = FileLock(lockPath: lockPath.appendingPathExtension("lock"))
         return try await lock.withLock {
             // Double-check blob doesn't exist after acquiring lock
             if fileManager.fileExists(atPath: blobPath.path) {
