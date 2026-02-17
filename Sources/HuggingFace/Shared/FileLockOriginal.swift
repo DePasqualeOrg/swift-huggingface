@@ -81,7 +81,7 @@ struct FileLockOriginal: Sendable {
 
         if !FileManager.default.fileExists(atPath: lockPath.path) {
             guard FileManager.default.createFile(atPath: lockPath.path, contents: nil) else {
-                throw FileLockError.acquisitionFailed(lockPath)
+                throw FileLockOriginalError.acquisitionFailed(lockPath)
             }
         }
 
